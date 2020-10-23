@@ -1,0 +1,26 @@
+.about {
+  height: 100%;
+  background-color: #fff;
+  border-radius: 3rem;
+  padding: 3rem 1.5rem;
+  max-width: 80%;
+  margin-left: 5%;
+  box-shadow: 0 0 1rem 1px #000;
+  transform: translateY(15%);
+
+  div {
+    width: 100%;
+    max-height: 100%;
+    overflow-y: scroll;
+    padding-right: 10px;
+
+    &::-webkit-scrollbar {
+      background-color: #ab90d6;
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #643ba5;
+    }
+  }
+}

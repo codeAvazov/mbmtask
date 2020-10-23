@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import "./global.scss";
+import { AppLayotu } from "./Components/AppLayotu";
+import { Background } from "./Components/Background";
+import { taskContext } from "./ContextApi";
+import { useSpring, animated } from "react-spring";
 
 function App() {
+  const { bat, setBat } = useContext(taskContext);
+
+  const arrow = useSpring({
+    opacity: bat ? 1 : 0,
+    config: { duration: 1000 },
+  });
+
+  const fade = useSpring({
+    opacity: !bat ? 1 : 0,
+    config: { duration: 1000 },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="global">
+      <div className="bg">
+        <Background />
+      </div>
+      <div className="app">
+        <animated.div className="h-100" style={fade}>
+          <AppLayotu />
+        </animated.div>
+      </div>
+      <animated.i
+        className="fas fa-long-arrow-alt-left icon"
+        onClick={() => setBat(!bat)}
+        style={arrow}
+      />
     </div>
   );
 }
